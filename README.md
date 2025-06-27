@@ -20,6 +20,7 @@
 ---
 
 ## 🚀 How to Use
+```bash
 
 git clone https://github.com/Kun31-cpu/Eternalblue-lab.git
 cd eternalblue-lab
@@ -37,13 +38,13 @@ Option	Description
 6️⃣	Exit
 
 🛠️ Tools Used
+OpenVPN – VPN connection to TryHackMe network
+
 Nmap – Port scanning and vulnerability detection
 
 Metasploit – Exploitation of MS17-010 (EternalBlue)
 
 John the Ripper – Cracking NTLM hashes
-
-OpenVPN – VPN connection to TryHackMe network
 
 nmap -p 445 --script smb-vuln* <TARGET_IP>
 

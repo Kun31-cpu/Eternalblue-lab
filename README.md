@@ -25,6 +25,7 @@ cd eternalblue-lab
 chmod +x eternalblue-lab.sh
 dos2unix eternalblue-lab.sh
 ./eternalblue-lab.sh
+![image](https://github.com/user-attachments/assets/629d4b56-7600-4449-ae83-1089e8fe180e)
 
 🧪 Menu Options
 Option	Description

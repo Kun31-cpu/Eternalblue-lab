@@ -14,6 +14,8 @@
 - 🧠 **Post-Exploitation Commands** for Meterpreter shell
 - 🔐 **Password Hash Cracking** with John the Ripper
 - 🏁 **Flag Discovery** with hints and answers
+- ![image](https://github.com/user-attachments/assets/379b023e-0c63-49b1-9189-db3ef3e34d4b)
+
 
 ---
 
@@ -25,7 +27,6 @@ cd eternalblue-lab
 chmod +x eternalblue-lab.sh
 dos2unix eternalblue-lab.sh
 ./eternalblue-lab.sh
-![image](https://github.com/user-attachments/assets/629d4b56-7600-4449-ae83-1089e8fe180e)
 
 🧪 Menu Options
 Option	Description

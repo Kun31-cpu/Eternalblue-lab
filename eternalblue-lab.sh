@@ -220,10 +220,10 @@ sleep 1
     read -p "[?] Enter Listening Port (LPORT, default 4444): " lport
     echo
     lport=${lport:-4444}
-     echo "[+] Running Nmap (basic scan)..."
+      echo -e "\033[1;32mRunning Nmap (basic scan)...\033[0m"
     nmap -sS -sV -O -Pn "$rhost" -oN initial_scan.txt
 
-    echo "[+] Running Nmap (vuln scripts)..."
+     echo -e "\033[1;32mRunning Nmap (vuln scripts)...\033[0m"
     nmap -sV --script vuln "$rhost" -oN vuln_scan.txt
 
     echo "[i] Scan complete. Saved to initial_scan.txt and vuln_scan.txt"

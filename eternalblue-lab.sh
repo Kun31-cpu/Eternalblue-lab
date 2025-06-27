@@ -220,15 +220,13 @@ sleep 1
     read -p "[?] Enter Listening Port (LPORT, default 4444): " lport
     echo
     lport=${lport:-4444}
-      echo -e "\033[1;32m8️Running Nmap (basic scan)... \033[0m"
+     echo "[+] Running Nmap (basic scan)..."
     nmap -sS -sV -O -Pn "$rhost" -oN initial_scan.txt
-    
-    echo -e "\033[1;32m8️ Running Nmap (vuln scripts).. \033[0m"
-     nmap -sV --script vuln "$rhost" -oN vuln_scan.txt
-     
-    echo -e "\033[1;33Scan complete. Saved to initial_scan.txt and vuln_scan.txt"\033[0m"
 
+    echo "[+] Running Nmap (vuln scripts)..."
+    nmap -sV --script vuln "$rhost" -oN vuln_scan.txt
 
+    echo "[i] Scan complete. Saved to initial_scan.txt and vuln_scan.txt"
         echo -e "\n\033[1;33m🚀 Launching EternalBlue Exploit...\033[0m"
 sleep 1
 echo -e "\033[1;32m[✓] Exploit may have succeeded! Checking...\033[0m"

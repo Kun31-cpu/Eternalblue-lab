@@ -21,8 +21,7 @@
 
 ## 🚀 How to Use
 
-```bash
-git clone https://github.com/yourname/eternalblue-lab
+git clone https://github.com/Kun31-cpu/Eternalblue-lab.git
 cd eternalblue-lab
 chmod +x eternalblue-lab.sh
 dos2unix eternalblue-lab.sh

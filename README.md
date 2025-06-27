@@ -62,6 +62,7 @@ exploit -j
 
 # Cracking Passwords
 john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
+
 🎯 Learning Objectives
 ✅ Understand EternalBlue and MS17-010
 ✅ Identify vulnerable SMB services
@@ -81,7 +82,4 @@ Cybersecurity Student | Ethical Hacking Enthusiast
 ⭐ Give it a Star!
 If you found this useful, consider starring the repository ❤️
 
-bash
-Copy
-Edit
 ⭐ github.com/yourname/eternalblue-lab

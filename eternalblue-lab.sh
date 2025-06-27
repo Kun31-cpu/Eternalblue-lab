@@ -16,6 +16,7 @@ show_banner() {
     echo "██│     ██████▄┬═█████▄┬██████▄"
     echo "╌╌│     ╌╌╌╌╌╌╌╌ ╌╌╌╌╌╌╌╌ ╌╌╌╌╌╌╌"
     echo "       🧠 TryHackMe – EternalBlue"
+    echo -e "         🚀 Kun31-cpu Project 🚀"
     echo -e "\033[0m"
 }
 
@@ -153,7 +154,7 @@ show_tasks() {
     echo -e "\033[1;32m7️⃣  Dump password hashes and crack them\033[0m"
     sleep 0.4
     echo -e "\033[1;32m8️⃣  Find and read the hidden flags 🏁\033[0m"
-    sleep 0.5
+    sleep 1
     echo -e "\033[1;36m=============================================\033[0m"
     read -p $'\033[1;33m[*] Press Enter to return to the menu...\033[0m'
 }
@@ -162,21 +163,38 @@ show_tasks() {
 # 🔌 Function: Connect VPN only
 connect_vpn() {
     clear
-    read -p "[?] Enter path to your TryHackMe .ovpn file: " vpnfile
+    echo
+    echo -e "\033[1;36m============================================================\033[0m"
+sleep 0.5
+  read -p "[?] Enter path to your TryHackMe .ovpn file: " vpnfile
+echo -e "\033[1;36m============================================================\033[0m"
+echo
+  
     if [[ ! -f "$vpnfile" ]]; then
         echo "[!] Error: File not found: $vpnfile"
         return
     fi
     echo "[+] Starting VPN..."
     sudo openvpn --config "$vpnfile"
-    read -p "[*] Press Enter to return to the menu..."
+    sleep 1
+echo -e "\033[1;36m============================================================\033[0m"
+sleep 0.5
+  read -p "[*] Press Enter to return to the menu..."
+echo -e "\033[1;36m============================================================\033[0m"
+sleep 1
+  
 }
 exploit_lab() {
     echo "[i] Cleaning up old VPN connections..."
     sudo pkill openvpn
     sleep 2
-
-    read -p "[?] Enter path to your TryHackMe .ovpn file: " vpnfile
+sleep 0.5
+ echo
+    echo -e "\033[1;36m============================================================\033[0m"
+sleep 0.5
+  read -p "[?] Enter path to your TryHackMe .ovpn file: " vpnfile
+echo -e "\033[1;36m============================================================\033[0m"
+echo
     if [[ ! -f "$vpnfile" ]]; then
         echo "[!] Error: File not found: $vpnfile"
         return

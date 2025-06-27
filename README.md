@@ -23,7 +23,7 @@
 ```bash
 
 git clone https://github.com/Kun31-cpu/Eternalblue-lab.git
-cd eternalblue-lab
+cd Eternalblue-lab
 chmod +x eternalblue-lab.sh
 dos2unix eternalblue-lab.sh
 ./eternalblue-lab.sh

